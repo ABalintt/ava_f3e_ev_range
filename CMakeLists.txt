@@ -3,32 +3,30 @@ project(ava_f3e_ev_range)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-add_compile_options(-Wall -Wextra -Wpedantic)
+  add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
 
-set(ament_dependencies
-  rclcpp
-  std_msgs
-  geometry_msgs
-)
+add_executable(ev_sensor_node src/ev_sensor_node.cpp)
+ament_target_dependencies(ev_sensor_node rclcpp std_msgs)
 
+add_executable(range_calc_node src/range_calc_node.cpp)
 # add_executable(simple_sub_node src/print_pose.cpp)
-# ament_target_dependencies(simple_sub_node ${ament_dependencies} )
+ament_target_dependencies(range_calc_node rclcpp std_msgs)
+
+install(TARGETS
+  ev_sensor_node
+  range_calc_node
+  DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
-
-install(TARGETS
-# simple_sub_node
-DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
