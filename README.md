@@ -50,4 +50,4 @@ classDef red fill:#ef4638,stroke:#152742,stroke-width:2px,color:#fff
 
 ## Screenshot
 
-![Output](screenshot.png)
+![Output](img/screenshot.png)
