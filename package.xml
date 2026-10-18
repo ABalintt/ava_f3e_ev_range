@@ -3,7 +3,7 @@
 <package format="3">
   <name>ava_f3e_ev_range</name>
   <version>0.1.0</version>
-  <description>Elektromos auto hatotav becslo csomag ROS 2 alatt</description>
+  <description>Electric vehicle range estimator package for ROS 2</description>
   <maintainer email="balint.avar@gmail.com">Ávár Bálint</maintainer>
   <license>GNU General Public License v3.0</license>
 
